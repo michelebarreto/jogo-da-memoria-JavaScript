@@ -1,0 +1,81 @@
+*{/* esse *{ }comando é para garantir que navegadores diferentes, não mudem a configuração da pagina*/
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #555;
+    text-align: center;/* aqui centralizou a imagem do game over*/
+}
+
+#container{/* aqui é a configuração do container do quadro de cartas */
+    width: 1325px; /*aqui determina a largura do quadro cartas*/
+    height: 495px;/* aqui determina a altura do quadro de cartas */
+    border: 1px solid #000;/* aqui determina borda do quadro das cartas */
+    position: relative; /* aqui é a posição do quadro de cartas cartas */
+    margin: 10px auto; /* aqui é o posicionamento do quadro de cartas */
+    border-radius: 10px; /* aqui arredonda as bordas do quadro de cartas */
+    background-color:#f6cb09 ;
+}
+.card{/*  aqui é a configuração de todas os card de cartas */
+  width: 160px; /* largura das cartas */
+  height: 240px;  /* altura das cartas */
+  position: absolute;
+  border-radius: 10px;/*  arredonda as bordas das cartas */
+  perspective: 600px;/* aqui é para dar uma sensação de profundidade ao girar a carta*/
+}
+
+.face{/* organizando as faces das cartas  */
+width: 100%;
+height: 100%;
+position: absolute;/* essa posição é para as cartas frente e fundo ficar uma emfrente da outra */
+border-radius: 10px;
+transition: all 1s;/* esse transitio é para afetar a mudança de virar a carta ao clicar em 1 segundo*/
+backface-visibility: hidden;/* aqui deixa o fundo da carta ivisivel, para mostra a outra imagem*/
+}
+.back{/*  aqui é o fundo da carta */
+    background: url("img/verso1.jpg");
+}
+.back.flipped{
+/* aqui esta criando uma transformação de rotação no eixo Y, para girar a 180 graus*/
+    transform: rotateY(180deg);
+}
+
+.front{
+    
+    transform: rotateY(-180deg);/* aqui as cartas de front recebe uma rotação de - 180 graus*/
+}
+
+.front.flipped{
+    transform: rotateY(0deg);/* rotação*/
+}
+.card:hover{/* esse comando hover, serve para indicar que o mouse esta passando por cima da carta  ira aparecer uma luz no fundo*/
+    box-shadow: 0 0 30px rgb(116, 245, 10);
+}
+
+.face.flipped.match{/* quando as cartas iguas forem encontradas elas ficaram com a bordar vermelha*/
+    box-shadow: 0,0,10px #a70303;
+}
+
+#modalGameOver{
+    position: absolute;
+    top:0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0 , 0, 0,0.5);/* aqui configura a transparencia da imagem game over*/
+    z-index: -2;/* esse comando é para colocar a imagem do game over atras das imagens das cartas*/
+}
+
+#imgGameOver{
+    margin-top: 100px; /*configurando a margem da imagem gamer over*/
+}
+
+#imgMatchSign{/* aqui é a configuração da imagem aparecer de match quando acertarem os pares das cartas*/
+    position: relative;
+    top: 250px;
+    transition-property: top, opacity;
+    transition-duration: 1,5s;
+    opacity: 1;
+    z-index: -1;
+
+}
